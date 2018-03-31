@@ -47,7 +47,7 @@ func ExtractFuncName(str string, startIndex int) string {
 	return name
 }
 
-func FindFuncIndexes(str string) []int { //make it accept a word whatever it is and search for it's index!
+func FindFuncIndexes(str string) []int { //make it accept a word whatever it is and search for its index!
 	var indexs []int
 	/*
 		for strings.Contains(str, "func") {
