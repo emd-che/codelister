@@ -41,7 +41,7 @@ func FindFuncIndexes(str string) []int { //make it accepts a word whatever it is
 		
 	var indexs []int
 	for i := 0; i < len(str)-1; i++ {
-		if string(str[i]) == "f" && string(str[i+1]) == "u" && string(str[i+2]) == "n" && string(str[i+3]) == "c" { //change that later!
+		if string(str[i]) == "f" && string(str[i+1]) == "u" && string(str[i+2]) == "n" && string(str[i+3]) == "c" && string(str[i+4]) == " " { //change that later!
 			index := i + len("func")
 			indexs = append(indexs, index + 1) // +1 is for the space before the func name.
 		}
