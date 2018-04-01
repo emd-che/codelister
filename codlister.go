@@ -3,7 +3,7 @@ package codelister
 
 func GetFuncs(str string) []string {
 	/*This function uses all the other functions , it takes a string then it finds all the functions indexes (FindFuncIndexes)
-	then it extracts thier names(ExtractFunName()) and thier return types (ExtractFuncsReturnType())
+	then it extracts their names(ExtractFunName()) and their return types (ExtractFuncsReturnType())
 	then it adds them into a slice of strings  and return it.
 	TODO: make every Item in the sclice into a map[string]string as map[function_name]return_type. */
 	
