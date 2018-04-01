@@ -2,21 +2,19 @@ package codister
 
 
 func GetFuncs(str string) []string {
+	/*This function uses all the other functions , it takes a string then it finds all the functions indexes (FindFuncIndexes)
+	then it extracts thier names(ExtractFunName()) and thier return types (ExtractFuncsReturnType())
+	then it adds them into a slice of strings  and return it.
+	TODO: make every Item in the sclice into a map[string]string as map[function_name]return_type. */
+	
 	var funcNames []string
 	var name string
 	var returnType string
 	for _, v := range FindFuncIndexes(str) {
-		/*name = ""
-		for string(str[v]) != "(" {
-			name += string(str[v])
-			//log.Println(name)
-			v += 1
-		}*/
-
-		name = ExtractFuncName(str, v)
-		returnType = FindFuncsReturnType(str, v)
-		funcNames = append(funcNames, name + " -> " + returnType)
-		//log.Println(funcNames)
+	name = ExtractFuncName(str, v)
+	returnType = FindFuncsReturnType(str, v)
+	funcNames = append(funcNames, name + " -> " + returnType)
+	//log.Println(funcNames)
 	
 	}
 	
@@ -24,6 +22,8 @@ func GetFuncs(str string) []string {
 }
 
 func ExtractFuncName(str string, startIndex int) string {
+	/*This function takes a string and a starting index of the function (from FindFuncIndexes) and it will extract the function name untill
+	the first "(" symbol then returns it. */
 	var name string
 	index := startIndex
 	for string(str[index]) != "(" {
@@ -33,16 +33,13 @@ func ExtractFuncName(str string, startIndex int) string {
 	return name
 }
 
-func FindFuncIndexes(str string) []int { //make it accept a word whatever it is and search for its index!
-	var indexs []int
+func FindFuncIndexes(str string) []int { //make it accepts a word whatever it is and search for its index!
 	/*
-		for strings.Contains(str, "func") {
-			funcIndex := strings.Index(str, "func")
-			indexStr := strconv.Itoa(funcIndex)
-			indexs = append(indexs, indexStr)
-			str = str[funcIndex:]
-		}*/
-
+	This function gets a string and return a list of every index that refers to the "func" keyword
+	the index is for the first word after the keyword "func".
+	*/
+		
+	var indexs []int
 	for i := 0; i < len(str)-1; i++ {
 		if string(str[i]) == "f" && string(str[i+1]) == "u" && string(str[i+2]) == "n" && string(str[i+3]) == "c" { //change that later!
 			index := i + len("func")
@@ -53,6 +50,11 @@ func FindFuncIndexes(str string) []int { //make it accept a word whatever it is 
 }
 
 func FindFuncsReturnType(str string, funcIndex int) string { //make it less longer!
+	/*
+	This func takes a string and the starting index of the keyword "func" (which we will get from the other function "FindFuncIndexes")
+	and it will extract the type of the function in backward starting from the symbol "{" until the first ")" then it will reverse it and return it
+	TODO: fix the "no return function" bug.
+	*/
 	var returnType string
 	var extractingIndex int
 	index := funcIndex
@@ -69,7 +71,7 @@ func FindFuncsReturnType(str string, funcIndex int) string { //make it less long
 		}
 
 	}
-	
+	//extracting the return type in backward
 	returnTypeR := ""
 	for string(str[extractingIndex]) != ")" {
 		
@@ -80,6 +82,8 @@ func FindFuncsReturnType(str string, funcIndex int) string { //make it less long
 	}
 	//log.Println(returnTypeR)
 
+	
+	//reversing it
 	for i := len(returnTypeR) - 2 ; i > 1 ; i-- {
 		returnType += string(returnTypeR[i])
 	//	log.Println(returnType)
