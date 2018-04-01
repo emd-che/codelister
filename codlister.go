@@ -49,7 +49,7 @@ func FindFuncIndexes(str string) []int { //make it accepts a word whatever it is
 	return indexs
 }
 
-func FindFuncsReturnType(str string, funcIndex int) string { //make it less longer!
+func FindFuncsReturnType(str string, funcIndex int) string { //the function body size is a bit long, make it less longer!
 	/*
 	This func takes a string and the starting index of the keyword "func" (which we will get from 
 	the other function "FindFuncIndexes") and it will extract the type of the function 
