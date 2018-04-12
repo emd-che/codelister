@@ -7,7 +7,6 @@ func GetFuncs(str string) []string {
 	and their return types (ExtractFuncsReturnType())then it adds them into a slice of strings and return it.
 	TODO: make every Item in the sclice into a map[string]string as map[function_name]return_type. if you found a way to
 	sort it efficiently, I dont't know if it is a good idea. */
-	//TODO: run go fmt when u go home and delete this comment!
 	var funcNames []string
 	var name string
 	var returnType string
