@@ -69,7 +69,7 @@ func FindFuncsReturnType(str string, funcIndex int) string { //the function body
 			if index != len(str) - 1{
 				index++
 			}else{
-				return "no return" //it doesn't work like that, I should find another way to know if a function has no return
+				return "" //it doesn't work like that, I should find another way to know if a function has no return
 			}
 		} else {
 			extractingIndex = index
@@ -95,6 +95,9 @@ func FindFuncsReturnType(str string, funcIndex int) string { //the function body
 	//	log.Println(returnType)
 	}
 	//log.Println(returnType)
+	if len(returnType) == 0 {
+		return "no return"
+	}
 	return returnType
 
 }
